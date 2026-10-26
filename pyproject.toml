@@ -1,0 +1,23 @@
+[project]
+name = "talk-log"
+version = "0.1.0"
+description = "用笔记本麦克风录下工作日白天的对话，按对话切段，交百炼 qwen-audio 转写并区分说话人，每天出一份 Markdown"
+requires-python = ">=3.14"
+dependencies = [
+    "httpx>=0.28",
+    "oss2>=2.19",
+    "webrtcvad-wheels>=2.0.14",
+]
+
+[project.scripts]
+talklog = "talklog.cli:main"
+
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["talklog"]
